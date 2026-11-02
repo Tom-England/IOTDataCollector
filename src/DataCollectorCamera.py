@@ -13,10 +13,12 @@ class DataCollectorCamera(DataCollectorAbstract):
         return result_raw.text
 
     def process(self, data):
-        timestamp = time.gmtime()
+        timestamp = int(time.time())
         new_items = 0
         self.master_result_set[timestamp] = data
         new_items += 1
         
         print(f"Added {new_items} new data points to master result set")
     
+    def flush(self):
+        self.master_result_set.clear()

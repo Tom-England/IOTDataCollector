@@ -35,3 +35,5 @@ class DataCollectorSensor(DataCollectorAbstract):
         print(f"Added {new_items} new data points to master result set")
         print(f"Detected {outliers} unusual data points to exclude")
     
+    def flush(self):
+        self.master_result_set.clear()

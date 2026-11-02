@@ -12,3 +12,7 @@ class DataCollectorAbstract(ABC):
     def collect_then_process(self):
         data = self.collect()
         self.process(data)
+
+    @abstractmethod
+    def flush(self):
+        pass
