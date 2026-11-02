@@ -8,7 +8,7 @@ class DataCollectorSensor(DataCollectorAbstract):
         self.url = "http://smartcam.uo.ncl.ac.uk:8001/sensor"
         self.master_result_set = {}
 
-    def Collect(self):
+    def collect(self):
         result_raw = get(self.url)
         result_json = json.loads(result_raw.text)
         result_set = []
@@ -18,7 +18,7 @@ class DataCollectorSensor(DataCollectorAbstract):
                 result_set.append(result)
         return result_set
 
-    def Process(self, data):
+    def process(self, data):
         new_items = 0
         outliers = 0 
         existing_timestamps = list(self.master_result_set.keys())
@@ -35,6 +35,3 @@ class DataCollectorSensor(DataCollectorAbstract):
         print(f"Added {new_items} new data points to master result set")
         print(f"Detected {outliers} unusual data points to exclude")
     
-    def CollectThenProcess(self):
-        data = self.Collect()
-        self.Process(data)

@@ -2,9 +2,13 @@ from abc import ABC, abstractmethod
 
 class DataCollectorAbstract(ABC):
     @abstractmethod
-    def Collect(self):
+    def collect(self):
         pass
     
     @abstractmethod
-    def Process(self):
+    def process(self):
         pass
+    
+    def collect_then_process(self):
+        data = self.collect()
+        self.process(data)
