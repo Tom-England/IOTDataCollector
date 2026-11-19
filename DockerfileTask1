@@ -1,0 +1,11 @@
+FROM python:3.12.3 AS Task1
+
+USER root
+
+ADD src/ /usr/local/source
+
+WORKDIR /usr/local/source
+
+RUN pip3 install -r requirements.txt
+
+CMD python3 task1.py

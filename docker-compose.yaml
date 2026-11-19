@@ -1,0 +1,33 @@
+services:
+    mqtt:
+        image: eclipse-mosquitto
+        ports:
+            - 1883:1883
+    task1:
+        image: task1
+        depends_on:
+            - mqtt
+    
+    task2:
+        image: task2
+        depends_on:
+            - mqtt
+
+    task3:
+        image: task3
+        depends_on:
+            - mqtt
+        volumes:
+            - /home/aws.admin/Documents/datacollector/graphs:/usr/local/source/graphs
+
+    task4:
+        image: task4
+        depends_on:
+            - mqtt
+        volumes:
+            - /home/aws.admin/Documents/datacollector/graphs:/usr/local/source/graphs
+
+    task5:
+        image: task5
+        depends_on:
+            - mqtt

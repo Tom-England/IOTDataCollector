@@ -10,7 +10,8 @@ class DataCollectorCamera(DataCollectorAbstract):
 
     def collect(self):
         result_raw = get(self.url)
-        return result_raw.text
+        #print(result_raw.content)
+        return list(result_raw.content)
 
     def process(self, data):
         timestamp = int(time.time())

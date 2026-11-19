@@ -1,0 +1,13 @@
+FROM python:3.12.3
+
+USER root
+
+ADD src/ /usr/local/source
+ADD output.tflite /usr/local/source/output.tflite
+
+WORKDIR /usr/local/source
+
+RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements_task4.txt
+
+CMD python3 task4.py

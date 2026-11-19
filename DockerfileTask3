@@ -1,0 +1,14 @@
+FROM python:3.12.3
+
+USER root
+
+ADD src/ /usr/local/source
+
+RUN mkdir /usr/local/source/graphs
+
+WORKDIR /usr/local/source
+
+RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements_task3.txt
+
+CMD python3 task3.py

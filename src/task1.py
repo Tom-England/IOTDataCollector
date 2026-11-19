@@ -6,35 +6,8 @@ from MQTTService import MQTTService
 API_CALL_TIMEOUT = 5
 RUNS_TO_PROCESS = 1
 
-def run_sensor():
-    sensor_data = DataCollectorSensor()
-    for i in range(RUNS_TO_PROCESS):
-        print("SENSOR - Starting Collection")
-        sensor_data.collect_then_process()
-        sleep(API_CALL_TIMEOUT)
-    return sensor_data.master_result_set
-
-def run_camera():
-    camera_data = DataCollectorCamera()
-    for i in range(RUNS_TO_PROCESS):
-        print("CAMERA - Starting Collection")
-        camera_data.collect_then_process()
-        sleep(API_CALL_TIMEOUT)
-    print(camera_data)
-
-def run_both():
-    camera_data = DataCollectorCamera()
-    sensor_data = DataCollectorSensor()
-    for i in range(RUNS_TO_PROCESS):
-        print("CAMERA - Starting Collection")
-        camera_data.collect_then_process()
-        print("SENSOR - Starting Collection")
-        sensor_data.collect_then_process()
-        sleep(API_CALL_TIMEOUT)
-    print(camera_data.master_result_set)
-    print(sensor_data.master_result_set)
-
 def main():
+    sleep(10)
     sensor_data = DataCollectorSensor()
     camera_data = DataCollectorCamera()
     mqtt_client = MQTTService()
